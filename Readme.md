@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Виталий Петрушенко](https://up.htmlacademy.ru/javascript/26/user/768249).
-* Наставник: Неизвестно.
+* Наставник: [Александр Григорьев](https://htmlacademy.ru/profile/fuckhtml)
 
 ---
 
