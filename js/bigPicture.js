@@ -4,8 +4,50 @@ const bigPicture = document.querySelector('.big-picture');
 const socialComments = document.querySelector('.social__comments');
 const socialComment = socialComments.querySelector('.social__comment');
 const commentsFrgment = document.createDocumentFragment();
-const socialCommentsCount = document.querySelector('.social__comment-count');
-const commentsLoader = document.querySelector('.comments-loader');
+const showCommentsCount = document.querySelector('.shown-comments-count');
+const MAX_COMMENTS = 5;
+
+// нчальное значение видимых комментов равно 5
+let shownCommentCount = MAX_COMMENTS;
+
+const commentsLogic = () => {
+  //делаем коллекцию массивом
+  const comments = Array.from(socialComments.children);
+  // комментариев больше 5
+  if (socialComments.children.length > MAX_COMMENTS) {
+    //добавляем счетчик и кнопки
+    socialCommentCount.classList.remove('hidden');
+    commentsLoader.classList.remove('hidden');
+    //перебор массива с комментариями
+    comments.forEach((comment, index) => {
+      //скрытие комментов
+      comment.classList.add('hidden');
+      //показ комментов
+      if(index < shownCommentCount) {
+        comment.classList.remove('hidden');
+      }
+    });
+  } else {
+    //если комментов 5 и меньше - кнопки скрываются
+    socialCommentCount.classList.add('hidden');
+    commentsLoader.classList.add('hidden');
+  }
+};
+
+ // показываем скрытые комменты
+
+ const showHiddenComments = () =>{
+  shownCommentCount += MAX_COMMENTS;
+  commentsLogic();
+  if(shownCommentCount >= socialComments.children.length) {
+    commentsLoader.classList.add('hidden');
+    shownCommentsCount.textContent = socialComments.children.length;
+  } else {
+    shownCommentsCount.textContent = shownCommentCount
+  }
+
+  return shownCommentCount;
+ };
 
 //скрываем счетчик комментариев и контейнер загрузки новых комментов
 
@@ -35,3 +77,5 @@ const eventBigPicture = (evt, photosData) => {
 
 export {eventBigPicture};
 export {bigPicture};
+export {commentsLoader};
+export {showHiddenComments};
