@@ -2,6 +2,8 @@ import { differentPictures } from "./random-photos";
 import { isEscapeKey } from "./utils";
 import { bigPicture } from "./bigPicture";
 import { eventBigPicture } from "./bigPicture";
+import { showHiddenComments } from "./bigPicture";
+import { commentsLoader } from "./bigPicture";
 
 const gallery = (photosData) => {
   const closeBigPicture = document.querySelector('.big-picture__cancel');
